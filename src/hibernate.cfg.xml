@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+          "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+          "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+		<!-- SQL dialect -->
+		<property name="dialect">
+			org.hibernate.dialect.MySQLDialect
+		</property>
+
+		<!-- database connection settings -->
+		<property name="connection.driver_class">
+			com.mysql.jdbc.Driver
+		</property>
+		<property name="connection.url">
+			jdbc:mysql://127.0.0.1:3306/friend
+		</property>
+		<property name="connection.username">root</property>
+		<property name="connection.password">root123</property>
+		<property name="connection.shutdown">true</property>
+
+		<!-- jdbc connection pool(use the build in one) -->
+		<property name="connection.pool_size">1</property>
+
+		<!-- enable hibernate's automatic session context management -->
+		<property name="current_session_context_class">thread</property>
+
+		<!-- disable the second-level cache -->
+		<property name="cache.provider_class">
+			org.hibernate.cache.NoCacheProvider
+		</property>
+
+		<!-- disable batching so hsqldb will propagate errors correctly -->
+		<property name="jdbc.batch_size">0</property>
+
+		<!-- echo all executed sql to stdout -->
+		<property name="show_sql">true</property>
+
+		<!-- list all the mapping documents we are using com/oreilly/hh/data/-->
+		<mapping resource="dao/User.hbm.xml" />
+		<mapping resource="dao/Message.hbm.xml" />
+		<mapping resource="dao/Friend.hbm.xml" />
+	</session-factory>
+</hibernate-configuration>
